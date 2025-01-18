@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result Checker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Montserrat;
+        margin: 0px;
+        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #58740c;
+      }
+      .container {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 30px;
+        background-color: #fff;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px 0;
+      }
+
+      input {
+        font-family: Montserrat;
+        padding: 10px 10px 10px 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-style: none;
+        border-bottom: 1px solid #878a81;
+      }
+
+      button {
+        background-color: #58740c;
+        color: white;
+        padding: 10px 20px;
+        font-family: Montserrat;
+        font-weight: 600;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #58740c;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 100%; background-color: rgb(255, 255, 255); border-radius: 5px; text-align: center; margin: 5px;">
+      <h2 style="font-family: Montserrat; font-size: medium; font-weight: 900;">BEST SCHOOL INTERNATIONAL ACADEMY</h2>
+    </div>
+    <div class="container">
+      <div style="flex: auto">
+        <h2>Results Checker</h2>
+
+        <div style="flex: auto">
+          <label for="name">Name</label>
+          <input
+            list="options"
+            id="searchable"
+            placeholder="Type to search..."
+          />
+          <datalist id="options">
+            <option>Loading options...</option>
+          </datalist>
+        </div>
+
+        <!-- <div style="flex: auto">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="E.g., Gifted Brai" />
+        </div> -->
+        <div>
+          <label for="class">Class:</label>
+          <select
+            id="class"
+            name="class"
+            required
+            style="
+              font-family: Montserrat;
+              padding: 10px 30px 10px 10px;
+              margin-top: 10px;
+              margin-bottom: 20px;
+              border-style: none;
+              border-bottom: 1px solid #878a81;
+            "
+          >
+            <option value="Kindergarten">Kindergarten</option>
+            <option value="Nursery 1">Nursery 1</option>
+            <option value="Nursery 2">Nursery 2</option>
+            <option value="Nursery 3">Nursery 3</option>
+            <option value="Primary 1">Primary 1</option>
+            <option value="Primary 2">Primary 2</option>
+            <option value="Primary 3">Primary 3</option>
+            <option value="Primary 4">Primary 4</option>
+            <option value="Primary 5">Primary 5</option>
+            <option value="Primary 6">Primary 6</option>
+            <option value="JSS 1">JSS 1</option>
+            <option value="JSS 2">JSS 2</option>
+            <option value="JSS 3">JSS 3</option>
+            <option value="SSS 1">SSS 1</option>
+            <option value="SSS 2">SSS 2</option>
+            <option value="SSS 3">SSS 3</option>
+          </select>
+        </div>
+
+        <div style="flex: auto">
+          <label for="session">Session</label>
+          <input type="text" id="session" placeholder="2024/2025" />
+        </div>
+
+        <div style="flex: auto">
+          <label for="term">Term:</label>
+          <select
+            id="term"
+            name="term"
+            required
+            style="
+              font-family: Montserrat;
+              padding: 10px 30px 10px 10px;
+              margin-top: 10px;
+              margin-bottom: 20px;
+              border-style: none;
+              border-bottom: 1px solid #878a81;
+            "
+          >
+            <option value="First Term">First Term</option>
+            <option value="Second Term">Second Term</option>
+            <option value="Third Term">Third Term</option>
+          </select>
+        </div>
+
+        <div style="flex: auto">
+          <label for="pin">Enter Pin</label>
+          <input type="text" id="pin" placeholder="H67234HGF532N87" />
+        </div>
+        <button onclick="searchCSV()">Search</button>
+      </div>
+    </div>
+
+    <!-- <script src="pinscript.js"></script> -->
+    <script>
+      async function loadOptionsFromCSV(csvFile) {
+        const response = await fetch(csvFile);
+        const data = await response.text();
+        const rows = data
+          .split("\n")
+          .map((row) => row.trim())
+          .filter((row) => row); // Remove empty lines
+
+        const datalist = document.getElementById("options");
+        datalist.innerHTML = ""; // Clear existing options
+
+        rows.forEach((row) => {
+          const option = document.createElement("option");
+          option.value = row; // Set option value
+          datalist.appendChild(option);
+        });
+      }
+
+      // Call the function with the CSV file path
+      loadOptionsFromCSV("names.csv");
+
+      function searchCSV() {
+        const pin = document.getElementById("pin").value;
+        // const name = document.getElementById("name").value;
+        const name = document.getElementById("searchable").value;
+        const className = document.getElementById("class").value;
+        const session = document.getElementById("session").value;
+        const term = document.getElementById("term").value;
+
+        // fetch("/validate", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ pin, name, class: className, session, term }),
+        // })
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     if (data.success) {
+        //       alert("PIN is valid and successfully processed.");
+
+        //     } else {
+        //       alert(data.message);
+        //     }
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error:", error);
+        //     alert("An error occurred while processing the PIN.");
+        //   });
+
+        fetch("/validate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ pin, name, class: className, session, term }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("PIN is valid and successfully processed.");
+
+              // Perform the redirection with the data from the response
+              const resultData = data.data; // Assuming the data from the server is in `data.data`
+              window.location.href = `report.html?data=${encodeURIComponent(
+                resultData
+              )}`;
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while processing the PIN.");
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Set the A4 size for print */
+      @page {
+        size: A4;
+        margin: 0mm;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4; /* Light gray background for preview */
+        font-family: Montserrat;
+      }
+
+      .document {
+        width: 210mm;
+        height: 297mm;
+        background: white;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 10mm; /* Adjust margins inside the document */
+        box-sizing: border-box;
+      }
+
+      h1,
+      p {
+        margin: 0;
+        padding: 0 0 10px 0;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 20mm;
+        left: 20mm;
+        right: 20mm;
+        text-align: center;
+        font-size: 12px;
+        color: #888;
+      }
+      tr,
+      th,
+      td,
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 3mm;
+      }
+      td {
+        font-weight: 500;
+      }
+      table {
+        margin-top: 2.5mm;
+      }
+      th,
+      td {
+        padding: 1.5mm 2mm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="document">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div style="width: 10%; align-items: center; justify-content: center">
+          <img
+            style="width: 20mm"
+            src="https://img.freepik.com/premium-vector/school-logo-design_706452-12.jpg?w=740"
+            alt=""
+          />
+        </div>
+        <div
+          style="
+            width: 90%;
+            font-family: Montserrat;
+            font-weight: 900;
+            font-size: 6.5mm;
+            padding-left: 5mm;
+          "
+        >
+          <div>BEST SCHOOL INTERNATIONAL ACADEMY</div>
+          <div
+            style="font-family: Montserrat; font-weight: 600; font-size: 3.5mm"
+          >
+            No 5 Mallam Musa Street, Auchi, Edo State, Nigeria
+          </div>
+          <div
+            style="font-family: Montserrat; font-weight: 800; font-size: 4mm"
+          >
+            TERMLY CONTINOUS ASSESSMENT RESULT
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            font-family: Montserrat;
+            font-weight: 800;
+            font-size: 4mm;
+            margin-top: 5mm;
+            align-self: flex-start;
+          "
+        >
+          STUDENT INFORMATION
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <div>
+            <table>
+              <tr>
+                <th>NAME</th>
+                <td id="name"></td>
+                <th>CLASS</th>
+                <td id="class"></td>
+                <th>SEX</th>
+                <td id="sex"></td>
+                <th>TERM</th>
+                <td id="term"></td>
+                <th>SESSION</th>
+                <td id="session"></td>
+              </tr>
+              <tr>
+                <th>STUDENT ID</th>
+                <td id="student-id"></td>
+                <th>ATTENDANCE</th>
+                <td id="attendance"></td>
+                <th>DAYS ABSENT</th>
+                <td id="days-absent"></td>
+                <th colspan="2">NEXT TERM BEGINS</th>
+                <td colspan="2" id="next-term-begins"></td>
+              </tr>
+            </table>
+          </div>
+          <br />
+
+          <div
+            style="
+              font-family: Montserrat;
+              font-weight: 800;
+              font-size: 4mm;
+              margin-top: 5mm;
+              text-align: left;
+            "
+          >
+            SUBJECT GRADES
+          </div>
+          <div style="align-items: center">
+            <table border="1" style="align-self: center; width: 100%">
+              <!-- Table will be dynamically populated here -->
+              <thead>
+                <tr>
+                  <th style="padding: 2mm 4mm">SUBJECT</th>
+                  <th>TEST</th>
+                  <th>EXAM</th>
+                  <th>TOTAL</th>
+                  <th>GRADE</th>
+                  <th>REMARK</th>
+                </tr>
+              </thead>
+              <tbody id="dynamic-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div style="width: 100%">
+        <table style="width: 100%">
+          <tr>
+            <th>Number of Subjects</th>
+            <th>Total Score</th>
+            <th>Student's Average</th>
+            <th>Class Average</th>
+            <th>Position in Class</th>
+            <th>Out Of</th>
+          </tr>
+          <tr>
+            <td id="no-of-subjects" style="text-align: center">
+              no-of-subjects
+            </td>
+            <td id="total-score" style="text-align: center">total-score</td>
+            <td id="students-average" style="text-align: center">
+              students-average
+            </td>
+            <td id="class-average" style="text-align: center">class-average</td>
+            <td id="position-in-class" style="text-align: center">
+              position-in-class
+            </td>
+            <td id="out-of" style="text-align: center">out-of</td>
+          </tr>
+        </table>
+      </div>
+      <br /><br />
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="width: 45%">
+          <table style="width: 100%">
+            <div
+              style="
+                font-family: Montserrat;
+                font-weight: 800;
+                font-size: 2.5mm;
+              "
+            >
+              AFFECTIVE DOMAIN
+            </div>
+            <tr>
+              <td>Neatness</td>
+              <td id="neatness">neatness</td>
+            </tr>
+            <tr>
+              <td>Punctuality</td>
+              <td id="punctuality">punctuality</td>
+            </tr>
+            <tr>
+              <td>Sense of Responsibility</td>
+              <td id="sense-of-responsibility">sense-of-responsibility</td>
+            </tr>
+            <tr>
+              <td>Teamwork</td>
+              <td id="teamwork">teamwork</td>
+            </tr>
+            <tr>
+              <td>Initiative</td>
+              <td id="initiative">initiative</td>
+            </tr>
+          </table>
+        </div>
+        <div style="width: 45%">
+          <table style="width: 100%">
+            <div
+              style="
+                font-family: Montserrat;
+                font-weight: 800;
+                font-size: 2.5mm;
+              "
+            >
+              PSYCHOMOTOR SKILLS
+            </div>
+            <tr>
+              <td>Communication Skills</td>
+              <td id="communication-skills">communication-skills</td>
+            </tr>
+            <tr>
+              <td>Musical Skills</td>
+              <td id="musical-skills">musical-skills</td>
+            </tr>
+            <tr>
+              <td>Sports</td>
+              <td id="sports">sports</td>
+            </tr>
+            <tr>
+              <td>Craft</td>
+              <td id="craft">craft</td>
+            </tr>
+            <tr>
+              <td>Hardworking</td>
+              <td id="hardworking">hardworking</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <br /><br />
+      <div style="width: 100%">
+        <table style="width: 100%">
+          <tr>
+            <th style="width: 40%">Class Teacher's Remarks</th>
+            <td id="teachers-remark">teachers-remark</td>
+          </tr>
+          <tr>
+            <th>Head of School's Remark</th>
+            <td id="head-remark">head-remark</td>
+          </tr>
+        </table>
+      </div>
+      <br /><br /><br />
+      <div
+        style="
+          font-family: Montserrat;
+          font-weight: 600;
+          font-size: 2.5mm;
+          text-align: center;
+        "
+      >
+        KEYS TO GRADING
+      </div>
+      <div
+        style="
+          font-family: Montserrat;
+          font-weight: 500;
+          font-size: 2.5mm;
+          text-align: center;
+        "
+      >
+        <span>FOR SSS: </span>A1-EXCELLENT(80-100), B2-VERY GOOD(70-74),
+        C-CREDIT(60-69), F-FAIL(0-59)
+      </div>
+      <div
+        style="
+          font-family: Montserrat;
+          font-weight: 500;
+          font-size: 2.5mm;
+          text-align: center;
+        "
+      >
+        <span>OTHERS: </span>A-EXCELLENT(80-100), C-CREDIT(60-79), F-FAIL(0-59)
+      </div>
+      <div
+        style="
+          font-family: Montserrat;
+          font-weight: 500;
+          font-size: 2.5mm;
+          text-align: center;
+        "
+      >
+        GENERAL CHARACTER TRAITS: 5-EXCELLENT, 4-VERY GOOD, 3-GOOD, 2-FAIR,
+        1-POOR
+      </div>
+    </div>
+
+    <script>
+      // The CSV row as a string
+      // const csvRow2 =
+      //   "2024/2025,SECOND TERM,2025-01-22,TEST NEW,SSS 3,123456234,123,21,MALE,10,1106,90%,85%,1,34,5,4,5,4,5,5,3,4,3,5,GOOD RESULT,PROMOTED TO THE NEXT CLASS,MATHS,20,70,90,A,GOOD,ENGLISH,30,76,106,A+,PERFECT,PHYSICS,15,70,85,A,VERY GOOD,CHEMISTRY,25,60,85,A,EXCELLENT,BIOLOGY,30,70,100,A,EXCELLENT,AGRICULTURE,25,60,85,A,EXCELLENT,CHRISTIAN RELIGIOUS STUDIES,25,90,115,A++,OVER PERFECT,ECONOMICS,30,70,100,A,EXCELLENT,COMMERCE,20,80,100,A,EXCELLENT,GEOGRAPHY,16,70,86,A,EXCELLENT";
+
+      let csvRow2;
+
+      window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const data = urlParams.get("data");
+        if (data) {
+          csvRow2 = data;
+          console.log(typeof(csvRow2))
+        
+
+      console.log(csvRow2)
+      // Split the CSV row into an array of values
+      const values = csvRow2.split(",");
+
+      // Breakpoints for splitting the row
+      const breakpoints = [9, 15, 20, 25, 27];
+
+      // Initialize starting index
+      let startIndex = 0;
+
+      // Function to get a chunk of values
+      function getRow(data, start, end) {
+        return data.slice(start, end);
+      }
+
+      // Process each chunk based on breakpoints
+      const studentInfo = getRow(values, startIndex, breakpoints[0]);
+      const score = getRow(values, breakpoints[0], breakpoints[1]);
+      const affective = getRow(values, breakpoints[1], breakpoints[2]);
+      const psychomotor = getRow(values, breakpoints[2], breakpoints[3]);
+      const remark = getRow(values, breakpoints[3], breakpoints[4]);
+      const subjects = getRow(values, breakpoints[4], values.length); // Remaining values
+
+      // Output rows to the console (or use them elsewhere in your code)
+      console.log("Row 1:", studentInfo);
+      console.log("Row 2:", score);
+      console.log("Row 3:", affective);
+      console.log("Row 4:", psychomotor);
+      console.log("Row 5:", remark);
+      console.log("Row 6:", subjects);
+
+      // You now have:
+      // - `row1`: First 9 values
+      // - `row2`: Values 10-15
+      // - `row3`: Values 16-25
+      // - `row4`: Values 26-28
+      // - `row5`: Remaining values
+
+      // The CSV row as a string
+      const csvRow = studentInfo.join(",");
+
+      // Split the CSV row into an array of values
+      const [
+        session,
+        term,
+        nextTermBegin,
+        name,
+        studentClass,
+        studentId,
+        attendance,
+        daysAbsent,
+        sex,
+      ] = csvRow.split(",");
+
+      // Map the values to the table
+      document.getElementById("name").textContent = name;
+      document.getElementById("class").textContent = studentClass;
+      document.getElementById("sex").textContent = sex;
+      document.getElementById("term").textContent = term;
+      document.getElementById("session").textContent = session;
+      document.getElementById("student-id").textContent = studentId;
+      document.getElementById("attendance").textContent = attendance;
+      document.getElementById("days-absent").textContent = daysAbsent;
+      document.getElementById("next-term-begins").textContent = nextTermBegin;
+
+      // The CSV row as a string
+      // Split the CSV row into an array of values
+      const subjectValues = subjects.join(",").split(",");
+      //   const subjectCsv = subjectValues.split(",")
+
+      // Get the table element
+      const table = document.getElementById("dynamic-table");
+
+      // Break the values into chunks of 4
+      for (let i = 0; i < subjectValues.length; i += 6) {
+        // Create a new table row
+        const row = document.createElement("tr");
+
+        // Add up to 4 cells to the row
+        for (let j = i; j < i + 6 && j < subjectValues.length; j++) {
+          // Create a table cell
+          const cell = document.createElement("td");
+
+          // Set the cell's content to the current value
+          cell.textContent = subjectValues[j];
+
+          // Append the cell to the row
+          row.appendChild(cell);
+        }
+
+        // Append the row to the table
+        table.appendChild(row);
+
+        const scorecsv = score.join(",");
+
+        // Split the CSV row into an array of values
+        const [
+          no_of_subjects,
+          total_score,
+          students_average,
+          class_average,
+          position_in_class,
+          out_of,
+        ] = scorecsv.split(",");
+
+        // Map the values to the table
+        document.getElementById("no-of-subjects").textContent = no_of_subjects;
+        document.getElementById("total-score").textContent = total_score;
+        document.getElementById("students-average").textContent =
+          students_average;
+        document.getElementById("position-in-class").textContent =
+          position_in_class;
+        document.getElementById("class-average").textContent = class_average;
+        document.getElementById("out-of").textContent = out_of;
+
+        const affectivecsv = affective.join(",");
+
+        // Split the CSV row into an array of values
+        const [
+          neatness,
+          punctuality,
+          sense_of_responsibility,
+          teamwork,
+          initiative,
+        ] = affectivecsv.split(",");
+
+        // Map the values to the table
+        document.getElementById("neatness").textContent = neatness;
+        document.getElementById("punctuality").textContent = punctuality;
+        document.getElementById("sense-of-responsibility").textContent =
+          sense_of_responsibility;
+        document.getElementById("teamwork").textContent = teamwork;
+        document.getElementById("initiative").textContent = initiative;
+      }
+
+      const psychomotorcsv = psychomotor.join(",");
+
+      // Split the CSV row into an array of values
+      const [communication_skills, musical_skills, sports, craft, hardworking] =
+        psychomotorcsv.split(",");
+
+      // Map the values to the table
+      document.getElementById("communication-skills").textContent =
+        communication_skills;
+      document.getElementById("musical-skills").textContent = musical_skills;
+      document.getElementById("sports").textContent = sports;
+      document.getElementById("craft").textContent = craft;
+      document.getElementById("hardworking").textContent = hardworking;
+
+      const remarkcsv = remark.join(",");
+
+      // Split the CSV row into an array of values
+      const [teachers_remark, head_remark] = remarkcsv.split(",");
+
+      // Map the values to the table
+      document.getElementById("teachers-remark").textContent = teachers_remark;
+      document.getElementById("head-remark").textContent = head_remark;
+    }
+  };
+    </script>
+  </body>
+</html>

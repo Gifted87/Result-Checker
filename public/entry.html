@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Entry Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Montserrat;
+        background-color: #58740c;
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0 5px;
+      }
+      form {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        flex: auto;
+        margin: auto;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: #1f2903;
+        margin-bottom: 40px;
+      }
+
+      #first,
+      #second {
+        width: 33%;
+        background-color: #ffffff;
+      }
+      label {
+        display: block;
+        color: #000000;
+        margin-top: 10px;
+        font-size: 0.85em;
+        font-weight: 600;
+      }
+
+      input {
+        font-family: Montserrat;
+        padding: 10px 10px 10px 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border-color: #71746c;
+        border-style: solid;
+        border-width: 2px;
+      }
+
+      input:hover {
+        font-family: Montserrat;
+        padding: 10px 10px 10px 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border-color: #1f2903;
+        border-style: solid;
+      }
+
+      select {
+        font-family: Montserrat;
+        padding: 10px 30px 10px 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #71746c;
+        border-style: solid;
+      }
+
+      #bold {
+        font-weight: 800;
+      }
+      .subject-row {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .subject-row input {
+        width: 25%;
+      }
+      .submit-btn {
+        background-color: #58740c; 
+        width: auto; 
+        padding: 20px 50px; 
+        align-self:flex-start;
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-top: 15px;
+        
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .add-subject-btn {
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: none;
+        background-color: #7a9b20;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        width: 20%;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .add-subject-btn:hover,
+      .submit-btn:hover {
+        background-color: #ee1e1e;
+      }
+      .removeRow{
+        font-family: Montserrat;
+        font-weight: 600;
+        color: red;
+        border: none;
+        background-color: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      @media (max-width: 450px) {
+        #first,
+      #second {
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .add-subject-btn {
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: none;
+        background-color: #7a9b20;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        width: auto;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .submit-btn {
+        background-color: #58740c; 
+        width: 100%; 
+        padding: 20px 50px; 
+        align-self:flex-start;
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-top: 15px;
+        
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .subject-row {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .subject-row input {
+        width: 100%;
+      }
+
+      form {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        flex: auto;
+        margin: auto;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: #1f2903;
+        margin-bottom: 40px;
+      }
+
+      select, input{
+        width: 100%;
+      }
+      
+      }
+      @media (min-width: 450px) and (max-width: 768px) {
+        #first,
+      #second {
+        width: 50%;
+        background-color: #ffffff;
+      }
+
+      .removeRow{
+        font-family: Montserrat;
+        font-weight: 600;
+        color: red;
+        border: none;
+        background-color: #ffffff;
+        padding: 0;
+        margin: 0;
+        text-align: right;
+        width: 100%;
+      }
+
+      .add-subject-btn {
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: none;
+        background-color: #7a9b20;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        width: auto;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .submit-btn {
+        background-color: #58740c; 
+        width: 100%; 
+        padding: 20px 50px; 
+        align-self:flex-start;
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-top: 15px;
+        
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .subject-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .subject-row input {
+        width: 35%;
+      }
+
+      form {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        flex: auto;
+        margin: auto;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: #1f2903;
+        margin-bottom: 40px;
+      }
+
+      select, input{
+        width: 80%;
+        margin-right: 10px;
+      }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 100%; background-color: rgb(255, 255, 255); border-radius: 5px; text-align: center; margin: 5px;">
+      <h2 style="font-family: Montserrat; font-size: large; font-weight: 900;">BEST SCHOOL INTERNATIONAL ACADEMY</h2>
+    </div>
+    <h2 style="text-align: center; font-weight: 900; color: #ffffff">
+      Report Entry Form
+    </h2>
+    <form id="student-form">
+      <div
+        style="
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        "
+      >
+        <div id="first">
+          <label for="session">Session:</label>
+          <input
+            type="text"
+            id="session"
+            class="textfield"
+            name="session"
+            required
+            placeholder="2024/2025"
+          />
+        </div>
+        <div id="first">
+          <label for="term">Term:</label>
+          <select id="term" name="term" required>
+            <option value="First Term">First Term</option>
+            <option value="Second Term">Second Term</option>
+            <option value="Third Term">Third Term</option>
+          </select>
+        </div>
+        <div id="first">
+          <label for="next-term">Next Term Begins:</label>
+          <input type="date" id="next-term" name="next-term" required />
+        </div>
+        <div id="first">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" class="textfield" name="name" required />
+        </div>
+
+        <div id="first">
+          <label for="class">Class:</label>
+          <select id="class" name="class" required>
+            <option value="Kindergarten">Kindergarten</option>
+            <option value="Nursery 1">Nursery 1</option>
+            <option value="Nursery 2">Nursery 2</option>
+            <option value="Nursery 3">Nursery 3</option>
+            <option value="Primary 1">Primary 1</option>
+            <option value="Primary 2">Primary 2</option>
+            <option value="Primary 3">Primary 3</option>
+            <option value="Primary 4">Primary 4</option>
+            <option value="Primary 5">Primary 5</option>
+            <option value="Primary 6">Primary 6</option>
+            <option value="JSS 1">JSS 1</option>
+            <option value="JSS 2">JSS 2</option>
+            <option value="JSS 3">JSS 3</option>
+            <option value="SSS 1">SSS 1</option>
+            <option value="SSS 2">SSS 2</option>
+            <option value="SSS 3">SSS 3</option>
+          </select>
+        </div>
+
+        <div id="first">
+          <label for="student-id">Student's ID:</label>
+          <input
+            type="text"
+            id="student-id"
+            class="textfield"
+            name="student-id"
+          />
+        </div>
+
+        <div id="first">
+          <label for="attendance">Attendance:</label>
+          <input
+            type="number"
+            id="attendance"
+            class="textfield"
+            name="attendance"
+            required
+          />
+        </div>
+
+        <div id="first">
+          <label for="days-absent">Days Absent:</label>
+          <input
+            type="number"
+            id="days-absent"
+            class="textfield"
+            name="days-absent"
+            required
+          />
+        </div>
+
+        <div id="first">
+          <label for="sex">Sex:</label>
+          <select id="sex" name="sex" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      </div>
+
+      <hr />
+      <hr />
+
+      <label style="font-weight: 800">Subjects:</label>
+      <div id="subjects-container">
+        <div class="subject-row">
+          <input type="text" placeholder="Subject" class="subject" required style="margin-bottom: 0;"/>
+          <input type="number" placeholder="Test" class="test" required style="margin-bottom: 0;" />
+          <input type="number" placeholder="Exam" class="exam" required style="margin-bottom: 0;"/>
+          <input type="number" placeholder="Total" class="total" required style="margin-bottom: 0;"/>
+          <input type="text" placeholder="Grade" class="grade" required style="margin-bottom: 0;" />
+          <input type="text" placeholder="Remark" class="remark" required style="margin-bottom: 0;" />
+          <button type="button" class="removeRow">X</button>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="add-subject-btn"
+        onclick="addSubjectRow()"
+        style="margin-bottom: 20px"
+      >
+        + Add Another Subject
+      </button>
+      <hr />
+      <hr />
+      <div
+        style="
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        "
+      >
+        <div id="second">
+          <label for="no-of-subjects">Number of Subjects:</label>
+          <input
+            type="number"
+            id="no-of-subjects"
+            class="textfield"
+            name="no-of-subjects"
+            required
+          />
+        </div>
+
+        <div id="second">
+          <label for="total-score">Total Score:</label>
+          <input
+            type="number"
+            id="total-score"
+            class="textfield"
+            name="total-score"
+            required
+          />
+        </div>
+
+        <div id="second">
+          <label for="students-average">Student's Average:</label>
+          <input
+            type="text"
+            id="students-average"
+            class="textfield"
+            name="students-average"
+            required
+            placeholder="50%"
+          />
+        </div>
+
+        <div id="second">
+          <label for="class-average">Class Average:</label>
+          <input
+            type="text"
+            id="class-average"
+            class="textfield"
+            name="class-average"
+            required
+            placeholder="50%"
+          />
+        </div>
+
+        <div id="second">
+          <label for="position-in-class">Position in Class:</label>
+          <input
+            type="number"
+            id="position-in-class"
+            class="textfield"
+            name="position-in-class"
+            required
+          />
+        </div>
+
+        <div id="second">
+          <label for="out-of">Out Of:</label>
+          <input
+            type="number"
+            id="out-of"
+            class="textfield"
+            name="out-of"
+            required
+          />
+        </div>
+      </div>
+
+      <hr />
+      <hr />
+
+      <label id="bold"
+        >AFFECTIVE DOMAIN (Scores are based on incidences in School)</label
+      >
+
+      <div
+        style="
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        "
+      >
+        <div id="second">
+          <label for="neatness">Neatness</label>
+          <input
+            type="number"
+            id="neatness"
+            class="textfield"
+            name="neatness"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="punctuality">Punctuality</label>
+          <input
+            type="number"
+            id="punctuality"
+            class="textfield"
+            name="punctuality"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="sense-of-responsibility">Sense of Responsibility</label>
+          <input
+            type="number"
+            id="sense-of-responsibility"
+            class="textfield"
+            name="sense-of-responsibility"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="teamwork">Teamwork</label>
+          <input
+            type="number"
+            id="teamwork"
+            class="textfield"
+            name="teamwork"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="initiative">Initiative</label>
+          <input
+            type="number"
+            id="initiative"
+            class="textfield"
+            name="initiative"
+            required
+            placeholder="1-5"
+          />
+        </div>
+      </div>
+
+      <hr />
+      <hr />
+      <label id="bold"
+        >PSYCHOMOTOR SKILLS(Scores are based on incidences in School)</label
+      >
+
+      <div
+        style="
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        "
+      >
+        <div id="second">
+          <label for="communication-skills">Communication Skills</label>
+          <input
+            type="number"
+            id="communication-skills"
+            class="textfield"
+            name="communication-skills"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="musical-skills">Musical Skills</label>
+          <input
+            type="number"
+            id="musical-skills"
+            class="textfield"
+            name="musical-skills"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="sports">Sports</label>
+          <input
+            type="number"
+            id="sports"
+            class="textfield"
+            name="sports"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="craft">Craft</label>
+          <input
+            type="number"
+            id="craft"
+            class="textfield"
+            name="craft"
+            required
+            placeholder="1-5"
+          />
+        </div>
+
+        <div id="second">
+          <label for="hardworking">Hardworking</label>
+          <input
+            type="number"
+            id="hardworking"
+            class="textfield"
+            class="textfield"
+            name="hardworking"
+            required
+            placeholder="1-5"
+          />
+        </div>
+      </div>
+
+      <hr><hr>
+      <label id="bold">REMARKS (the use of commas "," is not allowed)</label>
+
+      
+      <label for="teachers-remark">Class Teacher's Remark</label>
+      <input style="width: 85%;"
+        type="text"
+        id="teachers-remark"
+        class="textfield"
+        class="textfield"
+        name="teachers-remark"
+        required
+      />
+
+      <label for="head-remark">Head of School's Remark</label>
+      <input
+        type="text" style="width: 85%;"
+        id="head-remark"
+        class="textfield"
+        class="textfield"
+        name="head-remark"
+        required
+      />
+    </div><br /><br />
+
+    <label id="bold" style="color: red;"
+    >IMPORTANT: Verify that everything is correct before submitting this document</label
+  >
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <script>
+      function addSubjectRow() {
+        const container = document.getElementById("subjects-container");
+        const newRow = document.createElement("div");
+        newRow.classList.add("subject-row");
+        newRow.innerHTML = `
+        <input type="text" placeholder="Subject" class="subject" required style="margin-bottom: 0;">
+        <input type="number" placeholder="Test" class="test" required style="margin-bottom: 0;">
+        <input type="number" placeholder="Exam" class="exam" required style="margin-bottom: 0;">
+        <input type="number" placeholder="Total" class="total" required style="margin-bottom: 0;">
+        <input type="text" placeholder="Grade" class="grade" required style="margin-bottom: 0;">
+        <input type="text" placeholder="Remark" class="remark" required style="margin-bottom: 0;">
+        <button type="button" class="removeRow">X</button>
+      `;
+        container.appendChild(newRow);
+
+        newRow.querySelector('.removeRow').addEventListener('click', () => {
+    container.removeChild(newRow);
+  });
+      }
+
+      document
+        .getElementById("student-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const session = document.getElementById("session").value;
+          const schoolTerm = document.getElementById("term").value;
+          const next_term = document.getElementById("next-term").value;
+          const name = document.getElementById("name").value;
+          const studentClass = document.getElementById("class").value;
+          const student_id = document.getElementById("student-id").value;
+          const attendance = document.getElementById("attendance").value;
+          const days_absent = document.getElementById("days-absent").value;
+          const studentSex = document.getElementById("sex").value;
+          const no_of_subjects =
+            document.getElementById("no-of-subjects").value;
+          const total_score = document.getElementById("total-score").value;
+          const students_average =
+            document.getElementById("students-average").value;
+          const class_average = document.getElementById("class-average").value;
+          const position_in_class =
+            document.getElementById("position-in-class").value;
+          const out_of = document.getElementById("out-of").value;
+          const neatness = document.getElementById("neatness").value;
+          const punctuality = document.getElementById("punctuality").value;
+          const sense_of_responsibility = document.getElementById(
+            "sense-of-responsibility"
+          ).value;
+          const teamwork = document.getElementById("teamwork").value;
+          const initiatiave = document.getElementById("initiative").value;
+          const communication_skills = document.getElementById(
+            "communication-skills"
+          ).value;
+          const musical_skills =
+            document.getElementById("musical-skills").value;
+          const sports = document.getElementById("sports").value;
+          const craft = document.getElementById("craft").value;
+          const hardworking = document.getElementById("hardworking").value;
+          const teachers_remark =
+            document.getElementById("teachers-remark").value;
+          const head_remark = document.getElementById("head-remark").value;
+
+          const subjects = [];
+          document.querySelectorAll(".subject-row").forEach((row) => {
+            const subject = row.querySelector(".subject").value;
+            const test = row.querySelector(".test").value;
+            const exam = row.querySelector(".exam").value;
+            const total = row.querySelector(".total").value;
+            const grade = row.querySelector(".grade").value;
+            const remark = row.querySelector(".remark").value;
+            subjects.push({ subject, test, exam, total, grade, remark });
+          });
+
+          const data = {
+            session,
+            term: schoolTerm,
+            next_term,
+            name,
+            class: studentClass,
+            student_id,
+            attendance,
+            days_absent,
+            sex: studentSex,
+            no_of_subjects,
+            total_score,
+            students_average,
+            class_average,
+            position_in_class,
+            out_of,
+            neatness,
+            punctuality,
+            sense_of_responsibility,
+            teamwork,
+            initiatiave,
+            communication_skills,
+            musical_skills,
+            sports,
+            craft,
+            hardworking,
+            teachers_remark,
+            head_remark,
+            subjects,
+          };
+
+          const response = await fetch("/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            alert("Data submitted successfully!");
+            document.getElementById("student-form").reset();
+            document.getElementById("subjects-container").innerHTML = `
+          <div class="subject-row">
+            <input type="text" placeholder="Subject" class="subject" required style="margin-bottom: 0;">
+            <input type="number" placeholder="Test" class="test" required style="margin-bottom: 0;">
+            <input type="number" placeholder="Exam" class="exam" required style="margin-bottom: 0;">
+            <input type="number" placeholder="Total" class="total" required style="margin-bottom: 0;">
+            <input type="text" placeholder="Grade" class="grade" required style="margin-bottom: 0;">
+            <input type="text" placeholder="Remark" class="remark" required style="margin-bottom: 0;">
+          </div>
+        `;
+          } else {
+            alert("Failed to submit data.");
+          }
+        });
+    </script>
+  </body>
+</html>
